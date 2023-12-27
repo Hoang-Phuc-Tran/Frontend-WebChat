@@ -17,12 +17,9 @@ export function useAuthService(): AuthServiceProps {
   const getUserDetails = async () => {
     try {
       const userId = localStorage.getItem("user_id");
-      const response = await axios.get(
-        `http://hoangphucchat.up.railway.app/api/account/?user_id=${userId}`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(`${BASE_URL}/account/?user_id=${userId}`, {
+        withCredentials: true,
+      });
       const userDetails = response.data;
       localStorage.setItem("username", userDetails.username);
       setIsLoggedIn(true);
@@ -37,7 +34,7 @@ export function useAuthService(): AuthServiceProps {
   const login = async (username: string, password: string) => {
     try {
       const response = await axios.post(
-        "http://hoangphucchat.up.railway.app/api/token/",
+        `${BASE_URL}/token/`,
         {
           username,
           password,
@@ -66,7 +63,7 @@ export function useAuthService(): AuthServiceProps {
   const register = async (username: string, password: string) => {
     try {
       const response = await axios.post(
-        "http://hoangphucchat.up.railway.app/api/register/",
+        `${BASE_URL}/register/`,
         {
           username,
           password,
@@ -96,7 +93,7 @@ export function useAuthService(): AuthServiceProps {
   const resetPassword = async (username: string, oldPassword: string, newPassword: string) => {
     try {
       const response = await axios.post(
-        "http://hoangphucchat.up.railway.app/api/reset-password/",
+        `${BASE_URL}/reset-password/`,
         { username, oldPassword, newPassword },
         { withCredentials: true }
       );
