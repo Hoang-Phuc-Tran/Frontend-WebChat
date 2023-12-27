@@ -17,9 +17,12 @@ export function useAuthService(): AuthServiceProps {
   const getUserDetails = async () => {
     try {
       const userId = localStorage.getItem("user_id");
-      const response = await axios.get(`http://127.0.0.1:8000/api/account/?user_id=${userId}`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        `http://hoangphucchat.up.railway.app/api/account/?user_id=${userId}`,
+        {
+          withCredentials: true,
+        }
+      );
       const userDetails = response.data;
       localStorage.setItem("username", userDetails.username);
       setIsLoggedIn(true);
@@ -34,7 +37,7 @@ export function useAuthService(): AuthServiceProps {
   const login = async (username: string, password: string) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/token/",
+        "hoangphucchat.up.railway.app/api/token/",
         {
           username,
           password,
@@ -63,7 +66,7 @@ export function useAuthService(): AuthServiceProps {
   const register = async (username: string, password: string) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/register/",
+        "hoangphucchat.up.railway.app/api/register/",
         {
           username,
           password,
@@ -93,7 +96,7 @@ export function useAuthService(): AuthServiceProps {
   const resetPassword = async (username: string, oldPassword: string, newPassword: string) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/reset-password/",
+        "hoangphucchat.up.railway.app/api/reset-password/",
         { username, oldPassword, newPassword },
         { withCredentials: true }
       );

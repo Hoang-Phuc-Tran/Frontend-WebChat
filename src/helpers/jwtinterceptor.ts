@@ -17,7 +17,9 @@ const useAxiosWithJwtInterceptor = () => {
         axios.defaults.withCredentials = true;
 
         try {
-          const response = await axios.post("http://127.0.0.1:8000/api/token/refresh/");
+          const response = await axios.post(
+            "http://hoangphucchat.up.railway.app/api/token/refresh/"
+          );
           if (response["status"] == 200) {
             return jwtAxios(originalRequest);
           }
