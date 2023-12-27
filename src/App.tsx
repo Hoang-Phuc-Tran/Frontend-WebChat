@@ -14,7 +14,7 @@ import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Frontend-WebChat/">
       <AuthServiceProvider>
         <ToggleColorMode>
           <Routes>
