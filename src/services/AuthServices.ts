@@ -37,7 +37,7 @@ export function useAuthService(): AuthServiceProps {
   const login = async (username: string, password: string) => {
     try {
       const response = await axios.post(
-        "hoangphucchat.up.railway.app/api/token/",
+        "http://hoangphucchat.up.railway.app/api/token/",
         {
           username,
           password,
@@ -66,7 +66,7 @@ export function useAuthService(): AuthServiceProps {
   const register = async (username: string, password: string) => {
     try {
       const response = await axios.post(
-        "hoangphucchat.up.railway.app/api/register/",
+        "http://hoangphucchat.up.railway.app/api/register/",
         {
           username,
           password,
@@ -96,7 +96,7 @@ export function useAuthService(): AuthServiceProps {
   const resetPassword = async (username: string, oldPassword: string, newPassword: string) => {
     try {
       const response = await axios.post(
-        "hoangphucchat.up.railway.app/api/reset-password/",
+        "http://hoangphucchat.up.railway.app/api/reset-password/",
         { username, oldPassword, newPassword },
         { withCredentials: true }
       );
