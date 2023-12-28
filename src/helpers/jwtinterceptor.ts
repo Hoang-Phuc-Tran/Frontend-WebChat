@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuthService } from "../services/AuthServices";
+import { BASE_URL } from "../config";
 
 const useAxiosWithJwtInterceptor = () => {
   const jwtAxios = axios.create({});
@@ -17,9 +18,7 @@ const useAxiosWithJwtInterceptor = () => {
         axios.defaults.withCredentials = true;
 
         try {
-          const response = await axios.post(
-            "http://hoangphucchat.up.railway.app/api/token/refresh/"
-          );
+          const response = await axios.post(`${BASE_URL}/token/refresh/`);
           if (response["status"] == 200) {
             return jwtAxios(originalRequest);
           }
