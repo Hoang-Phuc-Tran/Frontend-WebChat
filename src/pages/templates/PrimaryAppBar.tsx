@@ -83,7 +83,11 @@ const PrimaryAppBar = () => {
           {list()}
         </Drawer>
 
-        <Link href="/" underline="none" color="inherit">
+        <Link
+          href="https://hoang-phuc-tran.github.io/Frontend-WebChat/"
+          underline="none"
+          color="inherit"
+        >
           <Typography
             variant="h6"
             noWrap
