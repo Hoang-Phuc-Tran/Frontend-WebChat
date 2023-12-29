@@ -1,7 +1,7 @@
 import Home from "./pages/Home";
 import Server from "./pages/Server";
 import Explore from "./pages/Explore";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, HashRouter } from "react-router-dom";
 import ToggleColorMode from "./components/ToggleColorMode";
 import Login from "./pages/Login";
 import { AuthServiceProvider } from "./context/AuthContext";
@@ -14,7 +14,7 @@ import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/Frontend-WebChat/">
+    <HashRouter basename="/Frontend-WebChat/">
       <AuthServiceProvider>
         <ToggleColorMode>
           <Routes>
@@ -46,7 +46,7 @@ const App = () => {
           </Routes>
         </ToggleColorMode>
       </AuthServiceProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
