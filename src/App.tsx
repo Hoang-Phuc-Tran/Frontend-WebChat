@@ -1,7 +1,7 @@
 import Home from "./pages/Home";
 import Server from "./pages/Server";
 import Explore from "./pages/Explore";
-import { Route, Routes, BrowserRouter, Navigate, useNavigate } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import ToggleColorMode from "./components/ToggleColorMode";
 import Login from "./pages/Login";
 import { AuthServiceProvider } from "./context/AuthContext";
@@ -11,22 +11,14 @@ import Register from "./pages/Register";
 import { MembershipProvider } from "./context/MemberContext";
 import MembershipCheck from "./components/Membership/MembershipCheck";
 import ResetPassword from "./pages/ResetPassword";
-import { useEffect } from "react";
+import HashHandler from "./pages/HashHandler";
 
 const App = () => {
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    let path = window.location.hash.replace("#", "");
-    if (path) {
-      navigate(path);
-    }
-  }, [navigate]);
-
   return (
     <BrowserRouter basename="/Frontend-WebChat/">
       <AuthServiceProvider>
         <ToggleColorMode>
+          <HashHandler />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
@@ -53,8 +45,6 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            {/* Catch-all route */}
-
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </ToggleColorMode>
