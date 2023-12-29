@@ -6,6 +6,16 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 const Login = () => {
   const { login } = useAuthServiceContext();
   const navigate = useNavigate();
+  const handleDemoLogin = async () => {
+    // Set form values to demo credentials
+    formik.setFieldValue("username", "DemoUser");
+    formik.setFieldValue("password", "Thisisdemo");
+    // Optionally, bypass formik submission and directly call login function
+    const status = await login("DemoUser", "Thisisdemo");
+    if (status !== 401) {
+      navigate("/");
+    }
+  };
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -116,6 +126,14 @@ const Login = () => {
             style={{ textDecoration: "none", marginLeft: "145px" }}
           >
             Home
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleDemoLogin}
+            sx={{ mt: 1, mb: 2 }}
+            style={{ textDecoration: "none", marginLeft: "10px", marginTop: "40px" }}
+          >
+            Sign in as a Demo Account! Please click here!
           </Button>
         </Box>
       </Box>
