@@ -7,13 +7,12 @@ const Login = () => {
   const { login } = useAuthServiceContext();
   const navigate = useNavigate();
   const handleDemoLogin = async () => {
-    // Set form values to demo credentials
-    formik.setFieldValue("username", "DemoUser");
-    formik.setFieldValue("password", "Thisisdemo");
-    // Optionally, bypass formik submission and directly call login function
+    // Directly call login function without using Formik's submitForm
     const status = await login("DemoUser", "Thisisdemo");
     if (status !== 401) {
       navigate("/");
+    } else {
+      // Handle the error here. For example, set an error message state and display it.
     }
   };
   const formik = useFormik({
