@@ -1,7 +1,7 @@
 import Home from "./pages/Home";
 import Server from "./pages/Server";
 import Explore from "./pages/Explore";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes, HashRouter } from "react-router-dom";
 import ToggleColorMode from "./components/ToggleColorMode";
 import Login from "./pages/Login";
 import { AuthServiceProvider } from "./context/AuthContext";
@@ -11,15 +11,13 @@ import Register from "./pages/Register";
 import { MembershipProvider } from "./context/MemberContext";
 import MembershipCheck from "./components/Membership/MembershipCheck";
 import ResetPassword from "./pages/ResetPassword";
-import RedirectOnLoad from "./pages/RedirectOnLoad";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/Frontend-WebChat/">
+    <HashRouter basename="/Frontend-WebChat/">
       <AuthServiceProvider>
         <ToggleColorMode>
           <Routes>
-            <Route path="/*" element={<RedirectOnLoad />} /> {/* Add this line */}
             <Route path="/" element={<Home />} />
             <Route
               path="/server/:serverId/:channelId?"
@@ -48,7 +46,7 @@ const App = () => {
           </Routes>
         </ToggleColorMode>
       </AuthServiceProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
