@@ -1,7 +1,7 @@
 import Home from "./pages/Home";
 import Server from "./pages/Server";
 import Explore from "./pages/Explore";
-import { Route, Routes, HashRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
 import ToggleColorMode from "./components/ToggleColorMode";
 import Login from "./pages/Login";
 import { AuthServiceProvider } from "./context/AuthContext";
@@ -14,7 +14,7 @@ import ResetPassword from "./pages/ResetPassword";
 
 const App = () => {
   return (
-    <HashRouter basename="/Frontend-WebChat/">
+    <BrowserRouter basename="/Frontend-WebChat/">
       <AuthServiceProvider>
         <ToggleColorMode>
           <Routes>
@@ -43,10 +43,13 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            {/* Catch-all route */}
+
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </ToggleColorMode>
       </AuthServiceProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
