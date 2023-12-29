@@ -11,14 +11,9 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // If the URL has a path, redirect to the home page with this path as a hash.
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
-        if (redirect && redirect != location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      });
+      if (document.location.pathname.match(/[^\/]\/\w+/)) {
+        document.location.href = "/#/" + document.location.pathname.match(/[^\/]\/\w+/)[0];
+      }
     </script>
   </body>
 </html>
